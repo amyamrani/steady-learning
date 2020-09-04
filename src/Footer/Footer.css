@@ -1,0 +1,8 @@
+* {
+  box-sizing: border-box;
+}
+
+footer {
+  padding: 1% 0;
+  background-color: #aaa;
+}
