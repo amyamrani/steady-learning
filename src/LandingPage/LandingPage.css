@@ -1,0 +1,9 @@
+.reasons-list ul {
+  text-align: left;
+  max-width: 450px;
+  margin: 15px auto;
+}
+
+.reasons-list__title {
+  font-weight: bold;
+}

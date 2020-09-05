@@ -33,13 +33,3 @@ p {
 p + p {
   margin-top: 15px;
 }
-
-.reasons-list ul {
-  text-align: left;
-  max-width: 450px;
-  margin: 15px auto;
-}
-
-.reasons-list__title {
-  font-weight: bold;
-}
