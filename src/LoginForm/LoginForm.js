@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import APIContext from '../APIContext';
 
 class LoginForm extends Component {
+  static contextType = APIContext;
+
   constructor(props) {
     super(props);
 
@@ -11,9 +14,20 @@ class LoginForm extends Component {
     }
   }
 
+  handleLogin = (e) => {
+    this.context.login({
+      email: this.state.email,
+    });
+    e.preventDefault();
+  }
+
   render() {
+    if (this.context.user) {
+      return <Redirect to="/dashboard" />
+    }
+
     return (
-      <form className='login-form'>
+      <form className='login-form' onSubmit={this.handleLogin}>
         <div>
           <label htmlFor='username'>Email</label>
           <input
@@ -35,7 +49,9 @@ class LoginForm extends Component {
           />
         </div>
 
-        <button type='submit'>Login</button>
+        <div>
+          <button>Login</button>
+        </div>
 
         <div>
           <Link to="/signup">Don't have an account?</Link>

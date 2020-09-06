@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 import LandingPage from '../LandingPage/LandingPage';
@@ -8,59 +8,53 @@ import SignupPage from '../SignupPage/SignupPage';
 import Dashboard from '../Dashboard/Dashboard';
 import APIContext from '../APIContext';
 import './App.css';
+import SetTopicPage from '../SetTopicPage/SetTopicPage';
+import STORE from '../store';
+
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      userArticles: [],
+      userArticles: STORE.userArticles,
     }
   }
 
   componentDidMount() {
-    this.setState({
-      userArticles: [
-        {
-          article: {
-            title: "How to make perfect boiled eggs",
-            url: "https://www.w3schools.com",
-            topic: "Cooking Basics",
-          },
-          start_date: "Day 3",
-          completed_date: "",
-        },
-        {
-          article: {
-            title: "How to bake a cake",
-            url: "https://www.w3schools.com",
-            topic: "Cooking Basics",
-          },
-          start_date: "Day 2",
-          completed_date: "",
-        },
-        {
-          article: {
-            title: "How to grill a steak",
-            url: "https://www.w3schools.com",
-            topic: "Cooking Basics",
-          },
-          start_date: "Day 1",
-          completed_date: "Today",
-        },
-      ]
-     });
+  }
+
+  deleteTopic = () => {
+    this.setState({ topic: undefined });
+  }
+
+  setTopic = (topic) => {
+    this.setState({ topic: topic });
+  }
+
+  login = (user) => {
+    this.setState({ user: user });
+  }
+
+  logout = () => {
+    this.setState({ user: undefined });
   }
 
   render() {
     const contextValue = {
       userArticles: this.state.userArticles,
+      deleteTopic: this.deleteTopic,
+      login: this.login,
+      logout: this.logout,
+      user: this.state.user,
+      topic: this.state.topic,
+      setTopic: this.setTopic,
     }
 
     return (
       <APIContext.Provider value={contextValue}>
         <div className='app'>
-          <Nav />
+          <Nav loggedIn={false} />
 
           <main>
             <Switch>
@@ -82,6 +76,11 @@ class App extends Component {
               <Route
                 exact path='/dashboard'
                 component={Dashboard}
+              />
+
+              <Route
+                exact path='/set_topic'
+                component={SetTopicPage}
               />
             </Switch>
           </main>

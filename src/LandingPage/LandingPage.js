@@ -31,7 +31,7 @@ class LandingPage extends Component {
               <div className='reasons-list__title'>Reasons to use Steady Learning:</div>
               <li>Immediate Learning</li>
               <li>Retention</li>
-              <li>Continually learn throughout your day or week </li>  
+              <li>Continually learn throughout your day or week </li>
               <li>Build good habits</li>
             </ul>
           </div>
@@ -39,7 +39,7 @@ class LandingPage extends Component {
 
         <section>
           <header>
-            <h3>Monitor your progress</h3>      
+            <h3>Monitor your progress</h3>
           </header>
 
           <p>[<em>placeholder for screenshot of checklist</em>]</p>

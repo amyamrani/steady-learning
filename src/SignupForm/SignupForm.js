@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import APIContext from '../APIContext';
 
 class SignupForm extends Component {
+  static contextType = APIContext;
+
   constructor(props) {
     super(props);
 
@@ -13,13 +16,25 @@ class SignupForm extends Component {
     }
   }
 
+  handleSubmit = (e) => {
+    this.context.login({
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      email: this.state.email,
+    });
+    e.preventDefault();
+  }
+
   render() {
+    if (this.context.user) {
+      return <Redirect to="/dashboard" />
+    }
+
     return (
-      <form className='signup-form'>
+      <form className='signup-form' onSubmit={this.handleSubmit}>
         <div>
           <label htmlFor='first-name'>First name</label>
           <input
-            placeholder='First Name'
             type='text'
             name='first-name'
             id='first-name'
@@ -33,7 +48,6 @@ class SignupForm extends Component {
             type='text'
             name='last-name'
             id='last-name'
-            placeholder='Last Name'
             value={this.state.lastName}
             onChange={e => this.setState({ lastName: e.target.value })}
           />
@@ -59,7 +73,7 @@ class SignupForm extends Component {
           />
         </div>
 
-        <button type='submit'>Sign Up</button>
+        <button>Sign Up</button>
 
         <div>
           <Link to="/login">Already have an account?</Link>

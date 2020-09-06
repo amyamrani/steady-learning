@@ -1,23 +1,21 @@
 import React, { Component } from 'react';
-import Nav from '../Nav/Nav';
 import SetTopicForm from '../SetTopicForm/SetTopicForm';
-import Footer from '../Footer/Footer';
 import './SetTopicPage.css';
+import APIContext from '../APIContext';
 
 class SetTopicPage extends Component {
+  static contextType = APIContext;
+
   render() {
     return (
       <div className='set-topic-page'>
-        <Nav />
-        <main>
-          <header>
-            <h1>New Topic</h1>
-          </header>
-          <section>
-            <SetTopicForm />
-          </section>
-        </main>
-        <Footer />
+        <header>
+          <h1>Set Topic</h1>
+        </header>
+
+        <section>
+          <SetTopicForm topic={this.context.topic} />
+        </section>
       </div>
     )
   }

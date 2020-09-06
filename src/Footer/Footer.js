@@ -4,7 +4,9 @@ import './Footer.css';
 class Footer extends Component {
   render() {
     return (
-      <footer>Footer</footer> 
+      <footer>
+        &copy; Steady Learning {(new Date().getFullYear())}
+      </footer>
     )
   }
 }
