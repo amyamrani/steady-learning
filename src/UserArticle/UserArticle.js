@@ -80,7 +80,7 @@ class UserArticle extends Component {
         <section>
           <header>
             <h3>{moment(this.props.date).format('LL')}</h3>
-            <a href={this.props.url}>{this.props.title}</a>
+            <a href={this.props.url} target="_blank">{this.props.title}</a>
           </header>
 
           <form>
