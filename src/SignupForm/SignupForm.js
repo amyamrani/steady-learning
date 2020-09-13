@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import APIContext from '../APIContext';
+import config from '../config';
 
 class SignupForm extends Component {
   static contextType = APIContext;
@@ -13,25 +14,51 @@ class SignupForm extends Component {
       lastName: "",
       email: "",
       password: "",
+      errorMessage: "",
     }
   }
 
   handleSubmit = (e) => {
-    this.context.login({
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
+    const user = {
+      first_name: this.state.firstName,
+      last_name: this.state.lastName,
       email: this.state.email,
-    });
+      password: this.state.password,
+    };
+
+    fetch(`${config.API_BASE_URL}/api/users/signup`, {
+      method: 'POST',
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user)
+    })
+      .then((res) => {
+        return !res.ok
+          ? res.json().then((e) => Promise.reject(e))
+          : res.json();
+      })
+      .then(res => {
+        this.context.signup(res);
+      })
+      .catch(err => {
+        this.setState({errorMessage: "Email and password are required."})
+      });
+
     e.preventDefault();
   }
 
   render() {
-    if (this.context.user) {
+    if (this.context.isLoggedIn === true) {
       return <Redirect to="/dashboard" />
     }
 
     return (
       <form className='signup-form' onSubmit={this.handleSubmit}>
+        {this.state.errorMessage && (
+          <div>{this.state.errorMessage}</div>
+        )}
+
         <div>
           <label htmlFor='first-name'>First name</label>
           <input

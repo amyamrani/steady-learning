@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 import './SetTopicForm.css';
 import APIContext from '../APIContext';
 import { withRouter } from 'react-router-dom';
+import config from '../config';
 
 class SetTopicForm extends Component {
   static contextType = APIContext;
 
   static defaultProps = {
     topic: '',
+    days: 5,
   };
 
   static propTypes = {
@@ -20,13 +22,34 @@ class SetTopicForm extends Component {
 
     this.state = {
       topic: props.topic,
+      days: props.days,
     }
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.context.setTopic(this.state.topic);
-    this.props.history.push('/dashboard');
+
+    const newPlan = {
+      topic: this.state.topic,
+      day_count: this.state.days,
+    }
+
+    const authToken = localStorage.getItem('authToken')
+
+    fetch(`${config.API_BASE_URL}/api/plans`, {
+      method: 'POST',
+      headers: {
+        "content-type": "application/json",
+        'Authorization': `Bearer ${authToken}`,
+      },
+      body: JSON.stringify(newPlan)
+    })
+      .then((res) => {
+        this.props.history.push('/dashboard');
+      })
+      .catch(err => {
+        this.setState({errorMessage: "Topic and day count are required."})
+      });
   }
 
   render() {
@@ -37,6 +60,7 @@ class SetTopicForm extends Component {
 
           <div>
             <select
+              required
               value={this.state.topic}
               onChange={e => this.setState({ topic: e.target.value })}
             >
@@ -52,11 +76,14 @@ class SetTopicForm extends Component {
 
           <div>
             <input
+              required
+              onChange={(e) => this.setState({ days: e.target.value })}
               type='number'
               name='days'
               placeholder='max 5 days'
               min={1}
               max={5}
+              value={this.state.days}
             />
           </div>
         </div>

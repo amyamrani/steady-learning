@@ -1,13 +1,16 @@
 import React from 'react'
 
 const APIContext = React.createContext({
+  recentPlan: { },
   userArticles: [],
-  deleteTopic: () => {},
   login: () => {},
   logout: () => {},
+  signup: () => {},
+  getRecentPlan: () => {},
+  setUserArticles: () => {},
+  setRecentPlan: () => {},
   user: undefined,
-  topic: "",
-  setTopic: () => {},
+  isLoggedIn: false,
 })
 
 export default APIContext;

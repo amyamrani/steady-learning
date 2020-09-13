@@ -16,7 +16,7 @@ class Nav extends Component {
         </div>
 
         <div className="nav-actions">
-          {this.context.user && (
+          {this.context.isLoggedIn && (
             <div className="nav-links">
               <div className="nav-links__link">
                 <Link to="/dashboard">Dashboard</Link>
@@ -28,7 +28,7 @@ class Nav extends Component {
             </div>
           )}
 
-          {!this.context.user && (
+          {!this.context.isLoggedIn && (
             <div className="nav-links">
               <div className="nav-links__link">
                 <Link to="/login">Login</Link>
