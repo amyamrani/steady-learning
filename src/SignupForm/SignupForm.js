@@ -62,6 +62,7 @@ class SignupForm extends Component {
         <div>
           <label htmlFor='first-name'>First name</label>
           <input
+            required
             type='text'
             name='first-name'
             id='first-name'
@@ -72,6 +73,7 @@ class SignupForm extends Component {
         <div>
           <label htmlFor='last-name'>Last name</label>
           <input
+            required
             type='text'
             name='last-name'
             id='last-name'
@@ -82,6 +84,7 @@ class SignupForm extends Component {
         <div>
           <label htmlFor='username'>Email</label>
           <input
+            required
             type='text'
             name='username'
             id='username'
@@ -92,6 +95,7 @@ class SignupForm extends Component {
         <div>
           <label htmlFor='password'>Password</label>
           <input
+            required
             type='password'
             name='password'
             id='password'

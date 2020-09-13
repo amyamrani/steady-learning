@@ -56,6 +56,7 @@ class LoginForm extends Component {
         <div>
           <label htmlFor='username'>Email</label>
           <input
+            required
             type='text'
             name='username'
             id='username'
@@ -66,6 +67,7 @@ class LoginForm extends Component {
         <div>
           <label htmlFor='password'>Password</label>
           <input
+            required
             type='password'
             name='password'
             id='password'
