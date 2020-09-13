@@ -10,7 +10,7 @@ class SetTopicForm extends Component {
 
   static defaultProps = {
     topic: '',
-    days: 5,
+    days: '',
   };
 
   static propTypes = {
@@ -66,7 +66,10 @@ class SetTopicForm extends Component {
             >
               <option value=''>Select</option>
               <option value='Cooking Basics'>Cooking Basics</option>
+              <option value='Things Everyone Should Know How To Do'>Things Everyone Should Know How To Do</option>
               <option value='Basic Home Repairs'>Basic Home Repairs</option>
+              <option value='Survival Skills'>Survival Skills</option>
+              <option value='Stock Market Basics'>Stock Market Basics</option>
             </select>
           </div>
         </div>
