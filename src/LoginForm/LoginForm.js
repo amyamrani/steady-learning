@@ -10,9 +10,9 @@ class LoginForm extends Component {
     super(props);
 
     this.state = {
-      email: "",
-      password: "",
-      errorMessage: "",
+      email: '',
+      password: '',
+      errorMessage: '',
     }
   }
 
@@ -20,7 +20,7 @@ class LoginForm extends Component {
     fetch(`${config.API_BASE_URL}/api/users/login`, {
       method: 'POST',
       headers: {
-        "content-type": "application/json",
+        'content-type': 'application/json',
       },
       body: JSON.stringify({
         email: this.state.email,
@@ -36,7 +36,7 @@ class LoginForm extends Component {
         this.context.login(res)
       })
       .catch(err => {
-        this.setState({errorMessage: "Incorrect combination of email and password."})
+        this.setState({errorMessage: 'Incorrect combination of email and password.'})
       });
 
     e.preventDefault();
@@ -44,7 +44,7 @@ class LoginForm extends Component {
 
   render() {
     if (this.context.isLoggedIn === true) {
-      return <Redirect to="/dashboard" />
+      return <Redirect to='/dashboard' />
     }
 
     return (
@@ -81,7 +81,7 @@ class LoginForm extends Component {
         </div>
 
         <div>
-          <Link to="/signup">Don't have an account?</Link>
+          <Link to='/signup'>Don't have an account?</Link>
         </div>
 
         <div>

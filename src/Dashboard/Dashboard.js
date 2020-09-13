@@ -20,7 +20,7 @@ class Dashboard extends Component {
     fetch(`${config.API_BASE_URL}/api/plans/${this.context.recentPlan.id}`, {
       method: 'PATCH',
       headers: {
-        "content-type": "application/json",
+        'content-type': 'application/json',
         'Authorization': `Bearer ${authToken}`,
       },
       body: JSON.stringify({status: 'archived'})
@@ -30,13 +30,13 @@ class Dashboard extends Component {
         this.context.setUserArticles([])
       })
       .catch(err => {
-        this.setState({errorMessage: "Failed to delete."})
+        this.setState({errorMessage: 'Failed to delete.'})
       });
   }
 
   render() {
     if (this.context.isLoggedIn === false) {
-      return <Redirect to="/" />
+      return <Redirect to='/' />
     }
 
     return (
@@ -51,7 +51,7 @@ class Dashboard extends Component {
 
           <div>
             {this.context.recentPlan.status === 'completed' && (
-              "Congrats on completing the topic!"
+              'Congrats on completing the topic!'
             )}
           </div>
 

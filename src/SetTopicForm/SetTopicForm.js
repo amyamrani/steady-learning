@@ -39,7 +39,7 @@ class SetTopicForm extends Component {
     fetch(`${config.API_BASE_URL}/api/plans`, {
       method: 'POST',
       headers: {
-        "content-type": "application/json",
+        'content-type': 'application/json',
         'Authorization': `Bearer ${authToken}`,
       },
       body: JSON.stringify(newPlan)
@@ -48,7 +48,7 @@ class SetTopicForm extends Component {
         this.props.history.push('/dashboard');
       })
       .catch(err => {
-        this.setState({errorMessage: "Topic and day count are required."})
+        this.setState({errorMessage: 'Topic and day count are required.'})
       });
   }
 

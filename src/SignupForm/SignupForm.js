@@ -10,11 +10,11 @@ class SignupForm extends Component {
     super(props);
 
     this.state = {
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-      errorMessage: "",
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      errorMessage: '',
     }
   }
 
@@ -29,7 +29,7 @@ class SignupForm extends Component {
     fetch(`${config.API_BASE_URL}/api/users/signup`, {
       method: 'POST',
       headers: {
-        "content-type": "application/json",
+        'content-type': 'application/json',
       },
       body: JSON.stringify(user)
     })
@@ -42,7 +42,7 @@ class SignupForm extends Component {
         this.context.signup(res);
       })
       .catch(err => {
-        this.setState({errorMessage: "Email and password are required."})
+        this.setState({errorMessage: 'Email and password are required.'})
       });
 
     e.preventDefault();
@@ -50,7 +50,7 @@ class SignupForm extends Component {
 
   render() {
     if (this.context.isLoggedIn === true) {
-      return <Redirect to="/dashboard" />
+      return <Redirect to='/dashboard' />
     }
 
     return (
@@ -107,7 +107,7 @@ class SignupForm extends Component {
         <button>Sign Up</button>
 
         <div>
-          <Link to="/login">Already have an account?</Link>
+          <Link to='/login'>Already have an account?</Link>
         </div>
       </form>
     )
