@@ -50,7 +50,9 @@ class Dashboard extends Component {
           </h2>
 
           <div>
-            {this.context.recentPlan.status}
+            {this.context.recentPlan.status === 'completed' && (
+              "Congrats on completing the topic!"
+            )}
           </div>
 
           {!this.context.recentPlan.id && (
