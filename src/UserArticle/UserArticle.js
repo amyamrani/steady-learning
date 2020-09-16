@@ -23,7 +23,7 @@ class UserArticle extends Component {
     fetch(`${config.API_BASE_URL}/api/plans/${this.props.plan_id}`, {
       method: 'PATCH',
       headers: {
-        "content-type": "application/json",
+        'content-type': 'application/json',
         'Authorization': `Bearer ${authToken}`,
       },
       body: JSON.stringify(params)
@@ -54,7 +54,7 @@ class UserArticle extends Component {
     fetch(`${config.API_BASE_URL}/api/user_articles/${this.props.id}`, {
       method: 'PATCH',
       headers: {
-        "content-type": "application/json",
+        'content-type': 'application/json',
         'Authorization': `Bearer ${authToken}`,
       },
       body: JSON.stringify(params)
@@ -69,7 +69,7 @@ class UserArticle extends Component {
 
       })
       .catch(err => {
-        this.setState({errorMessage: "Topic and day count are required."})
+        this.setState({errorMessage: 'Topic and day count are required.'})
       });
 
   };
@@ -80,14 +80,14 @@ class UserArticle extends Component {
         <section>
           <header>
             <h3>{moment(this.props.date).format('LL')}</h3>
-            <a href={this.props.url} target="_blank">{this.props.title}</a>
+            <a href={this.props.url} target='_blank' rel='noopener noreferrer'>{this.props.title}</a>
           </header>
 
           <form>
             <div>
               {this.state.completed && (
                 <button
-                  type="button"
+                  type='button'
                   onClick={e => this.handleUpdate(false)}
                 >
                   Completed
@@ -96,7 +96,7 @@ class UserArticle extends Component {
 
               {!this.state.completed && (
                 <button
-                type="button"
+                type='button'
                   onClick={e => this.handleUpdate(true)}
                 >
                   Mark as Complete
