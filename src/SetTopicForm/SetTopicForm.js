@@ -23,11 +23,13 @@ class SetTopicForm extends Component {
     this.state = {
       topic: props.topic,
       days: props.days,
+      errorMessage: undefined,
     }
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
+    this.setState({errorMessage: undefined})
 
     const newPlan = {
       topic: this.state.topic,
@@ -44,15 +46,40 @@ class SetTopicForm extends Component {
       },
       body: JSON.stringify(newPlan)
     })
-      .then((res) => {
-        this.props.history.push('/dashboard');
+      .then(res => {
+        if (!res.ok) {
+          return res.json().then(error => {
+            this.setState({errorMessage: error.error.message})
+          })
+        } else {
+          this.props.history.push('/dashboard');
+        }
       })
       .catch(err => {
-        this.setState({errorMessage: 'Topic and day count are required.'})
+        this.setState({errorMessage: 'Please try again.'})
       });
   }
 
+  retry = () => {
+    this.setState({errorMessage: undefined})
+    this.props.history.push('/set_topic')
+    this.props.history.goBack()
+  }
+
   render() {
+    if (this.state.errorMessage) {
+      return (
+        <div>
+          <h1>
+            Error!
+          </h1>
+
+          <p>{this.state.errorMessage}</p>
+
+          <button onClick={this.retry}>Retry</button>
+        </div>
+      )
+    }
     return (
       <form id='record-topic' onSubmit={this.handleSubmit}>
         <div className='form-section'>
@@ -84,12 +111,18 @@ class SetTopicForm extends Component {
               type='number'
               name='days'
               placeholder='max 5 days'
-              min={1}
+              min={-10}
               max={5}
               value={this.state.days}
             />
           </div>
         </div>
+
+        {this.state.errorMessage && (
+          <div>
+            {this.state.errorMessage}
+          </div>
+        )}
 
         <button type='submit'>Start Learning!</button>
       </form>
