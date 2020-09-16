@@ -111,7 +111,7 @@ class SetTopicForm extends Component {
               type='number'
               name='days'
               placeholder='max 5 days'
-              min={-10}
+              min={1}
               max={5}
               value={this.state.days}
             />
