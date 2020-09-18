@@ -1,11 +1,3 @@
-* {
-  box-sizing: border-box;
-}
-
-.form-section {
-  margin-bottom: 30px;
-}
-
-.form-section input {
-  width: 110px;
+.topic-submit-error {
+  color: red;
 }

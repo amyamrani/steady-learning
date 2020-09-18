@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import APIContext from '../APIContext';
 import config from '../config';
+import './SignupForm.css';
 
 class SignupForm extends Component {
   static contextType = APIContext;
@@ -54,7 +55,7 @@ class SignupForm extends Component {
     }
 
     return (
-      <form className='signup-form' onSubmit={this.handleSubmit}>
+      <form className='form' onSubmit={this.handleSubmit}>
         {this.state.errorMessage && (
           <div>{this.state.errorMessage}</div>
         )}
@@ -104,10 +105,12 @@ class SignupForm extends Component {
           />
         </div>
 
+        <div className='form-group'>
         <button>Sign Up</button>
+        </div>
 
         <div>
-          <Link to='/login'>Already have an account?</Link>
+          <Link to='/login' className='login-link'>Already have an account? Login here.</Link>
         </div>
       </form>
     )

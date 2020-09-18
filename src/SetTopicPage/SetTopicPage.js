@@ -8,12 +8,10 @@ class SetTopicPage extends Component {
 
   render() {
     return (
-      <div className='set-topic-page'>
-        <header>
-          <h1>Set Topic</h1>
-        </header>
+      <div className='page-container'>
+        <h1 className='section-title'>Set Topic</h1>
 
-        <section>
+        <section className='dashboard-articles'>
           <SetTopicForm topic={this.context.topic} />
         </section>
       </div>

@@ -1,8 +1,9 @@
-* {
-  box-sizing: border-box;
-}
-
 footer {
   padding: 1% 0;
-  background-color: #aaa;
+  background-color: #A0AEC0;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
 }

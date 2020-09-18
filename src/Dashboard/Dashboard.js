@@ -40,39 +40,40 @@ class Dashboard extends Component {
     }
 
     return (
-      <div className='dashboard'>
-        <header>
-          <h1>Dashboard</h1>
-          <h2>
-            Current Topic:
-            {' '}
-            {this.context.recentPlan.topic}
-          </h2>
+      <div className='page-container'>
+        <h1 className='section-title'>Dashboard</h1>
 
-          <div>
-            {this.context.recentPlan.status === 'completed' && (
-              'Congrats on completing the topic!'
-            )}
-          </div>
+        <div>
+          Current Topic:
+        </div>
 
-          {!this.context.recentPlan.id && (
-            <div>
-              <Link to='/set_topic'>Add New Topic</Link>
-            </div>
-          )}
+        <h2>
+          {this.context.recentPlan.topic}
+        </h2>
 
+        <div className='completed-message'>
           {this.context.recentPlan.status === 'completed' && (
-            <div>
-              <Link to='/set_topic'>Add New Topic</Link>
-            </div>
+            'Congrats on completing the topic!'
           )}
+        </div>
 
-          {this.context.recentPlan.status === 'active' && (
-            <div>
-              <button onClick={this.handleArchive}>Delete Topic</button>
-            </div>
-          )}
-        </header>
+        {!this.context.recentPlan.id && (
+          <div>
+            <Link to='/set_topic'>Add New Topic</Link>
+          </div>
+        )}
+
+        {this.context.recentPlan.status === 'completed' && (
+          <div>
+            <Link to='/set_topic'>Add New Topic</Link>
+          </div>
+        )}
+
+        {this.context.recentPlan.status === 'active' && (
+          <div>
+            <button onClick={this.handleArchive}>Delete Topic</button>
+          </div>
+        )}
 
         {this.context.userArticles.map(userArticle => (
           <UserArticle

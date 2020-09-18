@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import APIContext from '../APIContext';
 import config from '../config';
+import './LoginForm.css';
 
 class LoginForm extends Component {
   static contextType = APIContext;
@@ -36,7 +37,7 @@ class LoginForm extends Component {
         this.context.login(res)
       })
       .catch(err => {
-        this.setState({errorMessage: 'Incorrect combination of email and password.'})
+        this.setState({errorMessage: 'Incorrect email and/or password.'})
       });
 
     e.preventDefault();
@@ -48,9 +49,9 @@ class LoginForm extends Component {
     }
 
     return (
-      <form className='login-form' onSubmit={this.handleLogin}>
+      <form className='form' onSubmit={this.handleLogin}>
         {this.state.errorMessage && (
-          <div>{this.state.errorMessage}</div>
+          <div className='login-error-message'>{this.state.errorMessage}</div>
         )}
 
         <div>
@@ -76,23 +77,25 @@ class LoginForm extends Component {
           />
         </div>
 
-        <div>
+        <div className='form-group'>
           <button>Login</button>
         </div>
 
         <div>
-          <Link to='/signup'>Don't have an account?</Link>
+          <Link to='/signup' className='signup-link'>Don't have an account? Signup here.</Link>
         </div>
 
-        <div>
-          Demo User Credentials
-
-          <div>
-            <label>Email:</label> demo@user.com
+        <div className='demo-container'>
+          <div className='demo-label'>
+            Demo User Credentials
           </div>
 
           <div>
-            <label>Password:</label> Password123
+            <label className='demo-credentials-label'>Email:</label> demo@user.com
+          </div>
+
+          <div>
+            <label className='demo-credentials-label'>Password:</label> Password123
           </div>
         </div>
       </form>

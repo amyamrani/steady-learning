@@ -3,33 +3,137 @@
 }
 
 .app {
-  font-family: 'Open Sans',
+  font-family: 'Montserrat',
   sans-serif;
   font-size: 20px;
   color: #444;
   text-align: center;
   line-height: 1.5;
 }
+h1 {font-size: 2em;}
 
-header {
-  padding: 45px 15px;
+a, a:focus {
+  color: #DD6B20;
 }
 
-section {
-  min-height: 200px;
-  padding: 30px 15px;
-  background-color: #bbb;
+.page-container {
+  min-height: calc(100VH - 40px);
+  padding: 30px 0;
+  background-color: #EDF2F7;
 }
 
-section:nth-child(even) {
-  background-color: #ddd;
+.section-title {
+  padding-top: 30px;
 }
 
-p {
+.form {
+  max-width: 400px;
+  background-color: white;
+  padding: 20px 30px;
+  padding-top: 40px;
   margin: 0 auto;
-  max-width: 650px;
+  border: 2px solid #EDF2F7;
 }
 
-p + p {
-  margin-top: 15px;
+.form label {
+  text-align: left;
+  letter-spacing: 1px;
+  display: block;
+  text-transform: uppercase;
+  color: #718096;
+  font-size: 14px;
 }
+
+.form input {
+  display: block;
+  margin-bottom: 15px;
+  font-size: 14px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  background: #EDF2F7;
+  border: 1px solid #EDF2F7;
+  color: #4A5568;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-right: 32px;
+  padding-left: 16px;
+  line-height: 1.25;
+  border-radius: 4px;
+}
+
+.form select {
+  display: block;
+  margin-bottom: 15px;
+  font-size: 14px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  background: #EDF2F7;
+  border: 1px solid #EDF2F7;
+  color: #4A5568;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-right: 32px;
+  padding-left: 16px;
+  line-height: 1.25;
+  border-radius: 4px;
+}
+
+.form select:focus {
+  outline: 0;
+  background-color: white;
+  border-color: #a0aec0;
+}
+
+.form-group {
+  padding-bottom: 15px;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  color: #4A5568;
+  padding: 15px;
+  font-size: 14px;
+  pointer-events: none;
+}
+
+button {
+  background: #A0AEC0;
+  color: white;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 4px;
+  font-weight: bold;
+  border: 2px solid #718096;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+/* @media screen and (min-width:480px) {
+  h1 {
+      font-size: 28px;
+  }
+
+  #js-error-message {
+      text-align: left;
+  }
+}
+
+@media screen and (min-width:800px) {
+  h1 {
+      font-size: 32px;
+  }
+} */

@@ -3,6 +3,8 @@ import './UserArticle.css';
 import APIContext from '../APIContext';
 import config from '../config';
 import moment from 'moment';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendar } from "@fortawesome/free-solid-svg-icons";
 
 class UserArticle extends Component {
   static contextType = APIContext;
@@ -76,36 +78,36 @@ class UserArticle extends Component {
 
   render() {
     return (
-      <div className='user-article'>
-        <section>
-          <header>
-            <h3>{moment(this.props.date).format('LL')}</h3>
-            <a href={this.props.url} target='_blank' rel='noopener noreferrer'>{this.props.title}</a>
-          </header>
+      <section>
+        <div>
+          <h3>
+            <FontAwesomeIcon icon={faCalendar} />
 
-          <form>
-            <div>
-              {this.state.completed && (
-                <button
-                  type='button'
-                  onClick={e => this.handleUpdate(false)}
-                >
-                  Completed
-                </button>
-              )}
+            {moment(this.props.date).format('LL')}
+          </h3>
+          <a href={this.props.url} target='_blank' rel='noopener noreferrer'>{this.props.title}</a>
+        </div>
 
-              {!this.state.completed && (
-                <button
-                type='button'
-                  onClick={e => this.handleUpdate(true)}
-                >
-                  Mark as Complete
-                </button>
-              )}
-            </div>
-          </form>
-        </section>
-      </div>
+        <div>
+          {this.state.completed && (
+            <button
+              type='button'
+              onClick={e => this.handleUpdate(false)}
+            >
+              Completed
+            </button>
+          )}
+
+          {!this.state.completed && (
+            <button
+            type='button'
+              onClick={e => this.handleUpdate(true)}
+            >
+              Mark as Complete
+            </button>
+          )}
+        </div>
+      </section>
     )
   }
 }

@@ -4,15 +4,11 @@ import SignupForm from '../SignupForm/SignupForm';
 class SignupPage extends Component {
   render() {
     return (
-      <>
-        <section>
-          <header>
-            <h3>Signup</h3>
-          </header>
+      <section className='page-container'>
+        <h1 className='section-title'>Signup</h1>
 
-          <SignupForm />
-        </section>
-      </>
+        <SignupForm />
+      </section>
     )
   }
 }

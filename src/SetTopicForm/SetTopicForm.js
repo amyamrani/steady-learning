@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import './SetTopicForm.css';
 import APIContext from '../APIContext';
 import { withRouter } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import config from '../config';
 
 class SetTopicForm extends Component {
@@ -70,39 +72,47 @@ class SetTopicForm extends Component {
     if (this.state.errorMessage) {
       return (
         <div>
-          <h1>
-            Error!
-          </h1>
+          <div className='topic-submit-error'>
+            <h2>
+              Error!
+            </h2>
 
-          <p>{this.state.errorMessage}</p>
+            <p>{this.state.errorMessage}</p>
+          </div>
 
           <button onClick={this.retry}>Retry</button>
         </div>
       )
     }
     return (
-      <form id='record-topic' onSubmit={this.handleSubmit}>
-        <div className='form-section'>
-          <label htmlFor='topic-title'>Topic</label>
+      <form className='form' onSubmit={this.handleSubmit}>
+        <div>
+          <div className='form-group'>
+            <label htmlFor='topic-title'>Topic</label>
 
-          <div>
-            <select
-              required
-              value={this.state.topic}
-              onChange={e => this.setState({ topic: e.target.value })}
-            >
-              <option value=''>Select</option>
-              <option value='Cooking Basics'>Cooking Basics</option>
-              <option value='Things Everyone Should Know How To Do'>Things Everyone Should Know How To Do</option>
-              <option value='Basic Home Repairs'>Basic Home Repairs</option>
-              <option value='Survival Skills'>Survival Skills</option>
-              <option value='Stock Market Basics'>Stock Market Basics</option>
-            </select>
+            <div className='dropdown'>
+              <select
+                required
+                value={this.state.topic}
+                onChange={e => this.setState({ topic: e.target.value })}
+              >
+                <option value=''>Select</option>
+                <option value='Cooking Basics'>Cooking Basics</option>
+                <option value='Things Everyone Should Know How To Do'>Things Everyone Should Know How To Do</option>
+                <option value='Basic Home Repairs'>Basic Home Repairs</option>
+                <option value='Survival Skills'>Survival Skills</option>
+                <option value='Stock Market Basics'>Stock Market Basics</option>
+              </select>
+
+              <div className='dropdown-icon'>
+                <FontAwesomeIcon icon={faChevronDown} />
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className='form-section'>
-          <label htmlFor='days'># of Consecutive Days to receive daily information about above topic:</label>
+        <div className='form-group'>
+          <label htmlFor='days'># of Days</label>
 
           <div>
             <input

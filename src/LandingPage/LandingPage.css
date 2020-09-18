@@ -7,3 +7,32 @@
 .reasons-list__title {
   font-weight: bold;
 }
+
+.landing-section {
+  padding-bottom: 50px;
+}
+
+.landing-section__content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.signup-login-links {
+  margin: 0 5px;
+}
+
+/* @media screen and (min-width:480px) {
+  h1 {
+      font-size: 28px;
+  }
+
+  #js-error-message {
+      text-align: left;
+  }
+}
+
+@media screen and (min-width:800px) {
+  h1 {
+      font-size: 32px;
+  }
+} */
