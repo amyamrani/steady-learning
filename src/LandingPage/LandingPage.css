@@ -6,14 +6,12 @@
 
 .reasons-list__title {
   font-weight: bold;
+  color: #f45d48;
 }
 
-.landing-section {
-  padding-bottom: 50px;
-}
-
-.landing-section__content {
-  max-width: 600px;
+.landing-section-content {
+  width: 650px;
+  max-width: 90%;
   margin: 0 auto;
 }
 
@@ -21,18 +19,26 @@
   margin: 0 5px;
 }
 
-/* @media screen and (min-width:480px) {
-  h1 {
-      font-size: 28px;
-  }
-
-  #js-error-message {
-      text-align: left;
-  }
+.turtle-logo img {
+  max-width: 150px;
+  height: auto;
 }
 
-@media screen and (min-width:800px) {
-  h1 {
-      font-size: 32px;
+.screenshots {
+  border: 2px solid lightgray;
+  border-radius: 4px;
+  padding: 10px 0;
+}
+
+.screenshots img {
+  max-width: 450px;
+  width: 80%;
+  height:auto;
+}
+
+@media screen and (min-width:480px) {
+  .turtle-logo img {
+    max-width: 200px;
+    height: auto;
   }
-} */
+}
