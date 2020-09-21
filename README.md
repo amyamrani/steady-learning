@@ -5,7 +5,7 @@ Users are provided with a new article each day about a topic that they are inter
 ## Live App
 https://steady-learning.vercel.app
 
-# API Repo
+## API Repo
 https://github.com/amyamrani/steady-learning-api
 
 ## Screenshots
