@@ -23,7 +23,7 @@ class Nav extends Component {
               </div>
 
               <div className='nav-links__link'>
-                <button onClick={this.context.logout}>Logout</button>
+                <button className='button-clear' onClick={this.context.logout}>Logout</button>
               </div>
             </div>
           )}
@@ -35,7 +35,7 @@ class Nav extends Component {
               </div>
 
               <div className='nav-links__link'>
-                <Link to='/signup'>Signup</Link>
+                <Link to='/signup'>Sign up</Link>
               </div>
             </div>
           )}

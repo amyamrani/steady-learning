@@ -1,5 +1,5 @@
 nav {
-  background-color: #2D3748;
+  background-color: #078080;
   position: fixed;
   top: 0;
   left: 0;
@@ -19,7 +19,17 @@ nav {
 .nav-links__link a {
   color: white;
   text-decoration: none;
+  font-size: 16px;
 }
+
+button.button-clear {
+  font-size: 16px;
+}
+
+.nav-links__link a:focus {
+  color: #E2E8F0;
+}
+
 
 .nav-links__link + .nav-links__link {
   padding-left: 20px;
@@ -27,4 +37,36 @@ nav {
 
 .nav-actions {
   margin-left: auto;
+}
+
+/* @media screen and (min-width:480px) {
+  h1 {
+      font-size: 36px;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+}
+
+@media screen and (min-width:800px) {
+  h1 {
+      font-size: 2em;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+} */
+
+@media screen and (min-width:480px) {
+  .nav-links__link a {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width:800px) {
+  .nav-links__link a {
+    font-size: 20px;
+  }
 }
