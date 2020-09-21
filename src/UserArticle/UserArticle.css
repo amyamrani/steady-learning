@@ -1,3 +1,26 @@
 h3 svg {
   margin-right: 10px;
 }
+
+.user-article-section {
+  max-width: 500px;
+  width: 90%;
+  height:auto;
+  margin: 30px auto;
+  background-color:#fffffe;
+  padding: 40px 30px;
+  border-radius: 4px;
+  box-shadow: 0 5px 15px -10px rgba(31, 18, 53, 0.6);
+}
+
+.user-article-section h3 {
+  margin-top: 0px;
+}
+
+.article-link {
+  padding-bottom: 20px;
+}
+
+.article-link a {
+  font-weight: bold;
+}

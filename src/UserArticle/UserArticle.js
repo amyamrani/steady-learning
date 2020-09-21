@@ -4,7 +4,7 @@ import APIContext from '../APIContext';
 import config from '../config';
 import moment from 'moment';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendar } from "@fortawesome/free-solid-svg-icons";
+import { faCalendar, faCalendarCheck } from '@fortawesome/free-solid-svg-icons';
 
 class UserArticle extends Component {
   static contextType = APIContext;
@@ -20,6 +20,27 @@ class UserArticle extends Component {
     const authToken = localStorage.getItem('authToken')
     let params = {
       status: 'completed',
+    }
+
+    fetch(`${config.API_BASE_URL}/api/plans/${this.props.plan_id}`, {
+      method: 'PATCH',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${authToken}`,
+      },
+      body: JSON.stringify(params)
+    })
+      .then((res) => {
+        this.context.getRecentPlan()
+      })
+      .catch(err => {
+      });
+  }
+
+  handlePlanIncomplete = () => {
+    const authToken = localStorage.getItem('authToken')
+    let params = {
+      status: 'active',
     }
 
     fetch(`${config.API_BASE_URL}/api/plans/${this.props.plan_id}`, {
@@ -66,6 +87,7 @@ class UserArticle extends Component {
           this.handlePlanComplete()
           this.setState({ completed: true });
         } else {
+          this.handlePlanIncomplete()
           this.setState({ completed: false });
         }
 
@@ -78,14 +100,23 @@ class UserArticle extends Component {
 
   render() {
     return (
-      <section>
+      <section className='user-article-section'>
         <div>
           <h3>
-            <FontAwesomeIcon icon={faCalendar} />
+            {this.state.completed && (
+              <FontAwesomeIcon icon={faCalendarCheck} />
+            )}
+
+            {!this.state.completed && (
+              <FontAwesomeIcon icon={faCalendar} />
+            )}
 
             {moment(this.props.date).format('LL')}
           </h3>
-          <a href={this.props.url} target='_blank' rel='noopener noreferrer'>{this.props.title}</a>
+
+          <div className='article-link'>
+            <a href={this.props.url} target='_blank' rel='noopener noreferrer'>{this.props.title}</a>
+          </div>
         </div>
 
         <div>
@@ -100,7 +131,8 @@ class UserArticle extends Component {
 
           {!this.state.completed && (
             <button
-            type='button'
+              type='button'
+              className='button-white'
               onClick={e => this.handleUpdate(true)}
             >
               Mark as Complete

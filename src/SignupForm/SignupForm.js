@@ -93,7 +93,7 @@ class SignupForm extends Component {
             onChange={e => this.setState({ email: e.target.value })}
           />
         </div>
-        <div>
+        <div className='form-group'>
           <label htmlFor='password'>Password</label>
           <input
             required
@@ -106,10 +106,10 @@ class SignupForm extends Component {
         </div>
 
         <div className='form-group'>
-        <button>Sign Up</button>
+          <button>Sign up</button>
         </div>
 
-        <div>
+        <div className='form-group'>
           <Link to='/login' className='login-link'>Already have an account? Login here.</Link>
         </div>
       </form>

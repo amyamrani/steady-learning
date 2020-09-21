@@ -65,7 +65,8 @@ class LoginForm extends Component {
             onChange={e => this.setState({ email: e.target.value })}
           />
         </div>
-        <div>
+
+        <div className='form-group'>
           <label htmlFor='password'>Password</label>
           <input
             required
@@ -82,7 +83,7 @@ class LoginForm extends Component {
         </div>
 
         <div>
-          <Link to='/signup' className='signup-link'>Don't have an account? Signup here.</Link>
+          <Link to='/signup' className='signup-link'>Don't have an account? Sign up here.</Link>
         </div>
 
         <div className='demo-container'>

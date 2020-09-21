@@ -43,35 +43,33 @@ class Dashboard extends Component {
       <div className='page-container'>
         <h1 className='section-title'>Dashboard</h1>
 
-        <div>
-          Current Topic:
-        </div>
-
         <h2>
+          <span className='current-topic-label'>
+            Current Topic:
+          </span>
+
           {this.context.recentPlan.topic}
         </h2>
 
-        <div className='completed-message'>
-          {this.context.recentPlan.status === 'completed' && (
-            'Congrats on completing the topic!'
-          )}
-        </div>
-
         {!this.context.recentPlan.id && (
           <div>
-            <Link to='/set_topic'>Add New Topic</Link>
+            <Link className='button' to='/set_topic'>Add New Topic</Link>
           </div>
         )}
 
         {this.context.recentPlan.status === 'completed' && (
           <div>
-            <Link to='/set_topic'>Add New Topic</Link>
+            <div className='completed-message'>
+              Topic Completed!
+            </div>
+
+            <Link className='button' to='/set_topic'>Add New Topic</Link>
           </div>
         )}
 
         {this.context.recentPlan.status === 'active' && (
           <div>
-            <button onClick={this.handleArchive}>Delete Topic</button>
+            <button className='button-red' onClick={this.handleArchive}>Delete Topic</button>
           </div>
         )}
 
