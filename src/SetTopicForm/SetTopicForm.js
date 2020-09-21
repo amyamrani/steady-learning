@@ -4,7 +4,7 @@ import './SetTopicForm.css';
 import APIContext from '../APIContext';
 import { withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import config from '../config';
 
 class SetTopicForm extends Component {
